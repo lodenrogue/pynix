@@ -1,4 +1,5 @@
-# Python implementation of Unix utils
+# Pynix
+Python implementation of Unix utils
 
 ## Usage
 
