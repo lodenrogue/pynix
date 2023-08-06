@@ -3,5 +3,21 @@
 # Print working directory
 
 import os
+import argparse
 
-print(os.getcwd())
+
+def print_working_dir(resolve_links):
+    if resolve_links:
+        working_dir = os.getcwd()
+        print(os.path.realpath(working_dir))
+    else:
+        print(os.environ["PWD"])
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-L", action="store_true", help="use PWD from environment, even if it contains symlinks")
+    parser.add_argument("-P", action="store_true", default=False, help="display the physical current working directory (all symbolic links resolved)")
+
+    args = parser.parse_args()
+    print_working_dir(args.P)
